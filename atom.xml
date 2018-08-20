@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-08-19T10:33:25.289Z</updated>
+  <updated>2018-08-20T03:33:36.890Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,39 +17,28 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>d</title>
-    <link href="http://yoursite.com/2018/08/19/d/"/>
-    <id>http://yoursite.com/2018/08/19/d/</id>
-    <published>2018-08-19T10:33:25.000Z</published>
-    <updated>2018-08-19T10:33:25.289Z</updated>
+    <title>在线视频播放App</title>
+    <link href="http://yoursite.com/2018/07/15/%E5%9C%A8%E7%BA%BF%E8%A7%86%E9%A2%91%E6%92%AD%E6%94%BEApp/"/>
+    <id>http://yoursite.com/2018/07/15/在线视频播放App/</id>
+    <published>2018-07-15T01:07:48.000Z</published>
+    <updated>2018-08-20T03:33:36.890Z</updated>
     
-    <summary type="html">
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>My Gallery</title>
-    <link href="http://yoursite.com/2018/08/10/My-Gallery/"/>
-    <id>http://yoursite.com/2018/08/10/My-Gallery/</id>
-    <published>2018-08-10T13:27:00.000Z</published>
-    <updated>2018-08-19T10:35:01.910Z</updated>
-    
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
+    <content type="html"><![CDATA[<p>此app采用Hybrid模式开发，兼具“Native App良好用户交互体验的优势”和“Web App跨平台开发的优势”。使用vue框架，vuex做响应式状态存储，并使用cordova提供与手机交互的API。</p><h1 id="开发环境搭建"><a href="#开发环境搭建" class="headerlink" title="开发环境搭建"></a>开发环境搭建</h1><h2 id="vue安装"><a href="#vue安装" class="headerlink" title="vue安装"></a>vue安装</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install vue</span><br></pre></td></tr></table></figure><h2 id="安装vue-cli脚手架构建工具"><a href="#安装vue-cli脚手架构建工具" class="headerlink" title="安装vue-cli脚手架构建工具"></a>安装vue-cli脚手架构建工具</h2><p>vue-cli 提供一个官方命令行工具，可用于快速搭建大型单页应用。该工具提供开箱即用的构建工具配置，带来现代化的前端开发流程。只需几分钟即可创建并启动一个带热重载、保存时静态检查以及可用于生产环境的构建配置的项目：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --global vue-cli</span><br></pre></td></tr></table></figure><h2 id="创建一个基于-webpack-模板的新项目"><a href="#创建一个基于-webpack-模板的新项目" class="headerlink" title="创建一个基于 webpack 模板的新项目"></a>创建一个基于 webpack 模板的新项目</h2><p>初始化一个新项目，project-name为项目文件名称</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vue init webpack project-name</span><br></pre></td></tr></table></figure><p>运行初始化命令的时候回让用户输入几个基本的选项，如项目名称，描述，作者等信息，如果不想填直接回车默认就好。之后运行：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm install </span><br><span class="line">OR</span><br><span class="line">yarn install</span><br></pre></td></tr></table></figure><p> 看你初始化时的选择使用的哪种方式，之后运行测试</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run dev</span><br></pre></td></tr></table></figure><p>运行结果<br><img src="/2018/07/15/在线视频播放App/vue.png" alt="vue"></p>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
+        &lt;p&gt;此app采用Hybrid模式开发，兼具“Native App良好用户交互体验的优势”和“Web App跨平台开发的优势”。使用vue框架，vuex做响应式状态存储，并使用cordova提供与手机交互的API。&lt;/p&gt;
+&lt;h1 id=&quot;开发环境搭建&quot;&gt;&lt;a href=&quot;#开发
       
     
     </summary>
     
-      <category term="hello" scheme="http://yoursite.com/categories/hello/"/>
     
+      <category term="vue" scheme="http://yoursite.com/tags/vue/"/>
+    
+      <category term="cordova" scheme="http://yoursite.com/tags/cordova/"/>
     
   </entry>
   
