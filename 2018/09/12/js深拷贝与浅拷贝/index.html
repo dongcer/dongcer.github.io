@@ -15,7 +15,7 @@
     <meta name="description" content="">
     <meta name="Cache-Control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-    <title>about · dongcer&#39;s Blog</title>
+    <title>js深拷贝与浅拷贝 · dongcer&#39;s Blog</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -70,6 +70,8 @@
 
     <link rel="preload" href= /css/style.css?v=20180721 as="style" onload="this.onload=null;this.rel='stylesheet'" />
     <link rel="stylesheet" href= /css/mobile.css?v=20180721 media="(max-width: 980px)">
+    
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
     
     <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
 /* This file is meant as a standalone workflow for
@@ -194,12 +196,23 @@
 </head>
 
     
+        <body class="post-body">
+    
     
 <header class="header">
 
     <div class="read-progress"></div>
     <div class="header-sidebar-menu">&#xe775;</div>
     <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/" >dongcer&#39;s Blog</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">js深拷贝与浅拷贝</a>
+            </div>
+    </div>
     
     <a class="home-link" href=/>dongcer's Blog</a>
 </header>
@@ -213,24 +226,74 @@
 
 
 
+height:50vh;
+
 >
     
     <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
             
     <div class="site-intro-placeholder"></div>
-    <div class="site-intro-img" style="background-image: url(/)"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/post-bg.jpg)"></div>
     <div class="site-intro-meta">
         <!-- 标题  -->
         <h1 class="intro-title">
             <!-- 主页  -->
+            
+            js深拷贝与浅拷贝
+            <!-- 404 -->
             
         </h1>
         <!-- 副标题 -->
         <p class="intro-subtitle">
             <!-- 主页副标题  -->
             
+            
+            <!-- 404 -->
+            
         </p>
         <!-- 文章页meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                    <div class= post-intro-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "JavaScript">JavaScript</a>
+    
+</div>
+                
+                
+                    <div class="post-intro-read">
+                        <span>Word count: <span class="post-count">797</span> / Reading time: <span class="post-count">3 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                    <span class="post-intro-time">2018/09/12</span>
+                    
+                    <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                        <span class="iconfont-archer">&#xe602;</span>
+                        <span id="busuanzi_value_page_pv"></span>
+                    </span>
+                    
+                    <span class="shareWrapper">
+                        <span class="iconfont-archer shareIcon">&#xe71d;</span>
+                        <span class="shareText">Share</span>
+                        <ul class="shareList">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
         
     </div>
 </div>
@@ -333,7 +396,37 @@
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        
+        <h3 id="一、数据类型"><a href="#一、数据类型" class="headerlink" title="一、数据类型"></a>一、数据类型</h3><h4 id="数据分为基本数据类型-String-Number-boolean-Null-Undefined，Symbol-和对象数据类型。"><a href="#数据分为基本数据类型-String-Number-boolean-Null-Undefined，Symbol-和对象数据类型。" class="headerlink" title="数据分为基本数据类型(String, Number, boolean, Null, Undefined，Symbol)和对象数据类型。"></a>数据分为基本数据类型(String, Number, boolean, Null, Undefined，Symbol)和对象数据类型。</h4><ul>
+<li>基本数据类型的特点：直接存储在栈(stack)中的数据</li>
+<li>对象数据类型的特点：存储的是该对象在栈中引用，真实的数据存放在堆内存里。</li>
+</ul>
+<h3 id="二、深拷贝与浅拷贝"><a href="#二、深拷贝与浅拷贝" class="headerlink" title="二、深拷贝与浅拷贝"></a>二、深拷贝与浅拷贝</h3><p>深拷贝和浅拷贝是只针对Object和Array这样的对象数据类型的。</p>
+<p>深拷贝和浅拷贝的示意图大致如下：</p>
+<p><img src="/2018/09/12/js深拷贝与浅拷贝/164e6856d76ff161.webp" alt="img"></p>
+<p>浅拷贝只复制指向某个对象的指针，而不复制对象本身，新旧对象还是共享同一块内存。但深拷贝会另外创造一个一模一样的对象，新对象跟原对象不共享内存，修改新对象不会改到原对象。 </p>
+<h3 id="三、浅拷贝的实现方式"><a href="#三、浅拷贝的实现方式" class="headerlink" title="三、浅拷贝的实现方式"></a>三、浅拷贝的实现方式</h3><p><strong>1.直接赋值一个变量</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;<span class="attr">username</span>: <span class="string">'kobe'</span>, <span class="attr">age</span>: <span class="number">39</span>, <span class="attr">sex</span>: &#123;<span class="attr">option1</span>: <span class="string">'男'</span>, <span class="attr">option2</span>: <span class="string">'女'</span>&#125;&#125;;</span><br><span class="line"><span class="keyword">let</span> obj1 = obj;</span><br><span class="line">obj1.sex.option1 = <span class="string">'不男不女'</span>; <span class="comment">// 修改复制的对象会影响原对象</span></span><br></pre></td></tr></table></figure>
+<p><strong>2.Object.assign()</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">    username: <span class="string">'kobe'</span></span><br><span class="line">    &#125;;</span><br><span class="line"><span class="keyword">let</span> obj2 = <span class="built_in">Object</span>.assign(obj);</span><br><span class="line">obj2.username = <span class="string">'wade'</span>;</span><br><span class="line"><span class="built_in">console</span>.log(obj);<span class="comment">//&#123;username: "wade"&#125;</span></span><br></pre></td></tr></table></figure>
+<p><strong>3.Array.prototype.concat()</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>, <span class="number">3</span>, &#123;</span><br><span class="line">    username: <span class="string">'kobe'</span></span><br><span class="line">    &#125;];</span><br><span class="line"><span class="keyword">let</span> arr2=arr.concat();    </span><br><span class="line">arr2[<span class="number">2</span>].username = <span class="string">'wade'</span>;</span><br></pre></td></tr></table></figure>
+<p>修改新对象会改到原对象。</p>
+<p><strong>关于Array的slice方法不修改原数组，只会返回一个浅复制了原数组中的元素的一个新数组。</strong></p>
+<p>原数组的元素会按照下述规则拷贝：</p>
+<ul>
+<li>如果该元素是个对象引用(不是实际的对象)，slice 会拷贝这个对象引用到新的数组里。两个对象引用都引用了同一个对象。如果被引用的对象发生改变，则新的和原来的数组中的这个元素也会发生改变。</li>
+<li>对于字符串、数字及布尔值来说（不是 String、Number 或者 Boolean 对象），slice 会拷贝这些值到新的数组里。在别的数组里修改这些字符串或数字或是布尔值，将不会影响另一个数组。</li>
+</ul>
+<h3 id="四、深拷贝的实现方式"><a href="#四、深拷贝的实现方式" class="headerlink" title="四、深拷贝的实现方式"></a>四、深拷贝的实现方式</h3><p><strong>1.JSON.parse(JSON.stringify())</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>, <span class="number">3</span>, &#123;</span><br><span class="line">    username: <span class="string">' kobe'</span></span><br><span class="line">&#125;];</span><br><span class="line"><span class="keyword">let</span> arr4 = <span class="built_in">JSON</span>.parse(<span class="built_in">JSON</span>.stringify(arr));</span><br><span class="line">arr4[<span class="number">2</span>].username = <span class="string">'duncan'</span>;</span><br></pre></td></tr></table></figure>
+<p><strong>这种方法虽然可以实现数组或对象深拷贝,但不能处理函数等一些其他情况也可以通过JSON.stringify()方法第二个参数进行判断处理。</strong></p>
+<p><strong>2.递归</strong></p>
+<p>递归方法实现深度克隆原理：<strong>遍历对象、数组直到里边都是基本数据类型，然后再去复制，就是深度拷贝</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">clone</span>(<span class="params">obj</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> o;</span><br><span class="line">    <span class="keyword">switch</span> (<span class="keyword">typeof</span> obj) &#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">"undefined"</span>:</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">"string"</span>:</span><br><span class="line">            o = obj + <span class="string">""</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">"number"</span>:</span><br><span class="line">            o = obj - <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">"boolean"</span>:</span><br><span class="line">            o = obj;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">"object"</span>: <span class="comment">// object 分为两种情况 对象（Object）或数组（Array）</span></span><br><span class="line">            <span class="keyword">if</span> (obj === <span class="literal">null</span>) &#123;</span><br><span class="line">                o = <span class="literal">null</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">if</span> (<span class="built_in">Object</span>.prototype.toString.call(obj).slice(<span class="number">8</span>, <span class="number">-1</span>) === <span class="string">"Array"</span>) &#123;</span><br><span class="line">                    o = [];</span><br><span class="line">                    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; obj.length; i++) &#123;</span><br><span class="line">                        o.push(clone(obj[i]));</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    o = &#123;&#125;;</span><br><span class="line">                    <span class="keyword">for</span> (<span class="keyword">var</span> k <span class="keyword">in</span> obj) &#123;</span><br><span class="line">                        o[k] = clone(obj[k]);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">            o = obj;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> o;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>参考文档：</p>
+<p><a href="https://blog.csdn.net/weixin_39927080/article/details/79206320" target="_blank" rel="noopener">https://blog.csdn.net/weixin_39927080/article/details/79206320</a></p>
+<p><a href="https://juejin.im/post/5b5dcf8351882519790c9a2e" target="_blank" rel="noopener">https://juejin.im/post/5b5dcf8351882519790c9a2e</a></p>
+
     </article>
     <!-- license  -->
     
@@ -343,6 +436,11 @@
             
         </li>
         <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href= "/2018/07/15/在线视频播放App/" title= 在线视频播放App >
+                    <div class="prevTitle">在线视频播放App</div>
+                </a>
             
         </li>
     </ul>
@@ -453,6 +551,24 @@
 </footer>
     </div>
     <!-- toc -->
+    
+    <div class="toc-wrapper" style=
+    
+
+
+
+
+
+
+
+top:50vh;
+
+    >
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#一、数据类型"><span class="toc-number">1.</span> <span class="toc-text">一、数据类型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#数据分为基本数据类型-String-Number-boolean-Null-Undefined，Symbol-和对象数据类型。"><span class="toc-number">1.1.</span> <span class="toc-text">数据分为基本数据类型(String, Number, boolean, Null, Undefined，Symbol)和对象数据类型。</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二、深拷贝与浅拷贝"><span class="toc-number">2.</span> <span class="toc-text">二、深拷贝与浅拷贝</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三、浅拷贝的实现方式"><span class="toc-number">3.</span> <span class="toc-text">三、浅拷贝的实现方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#四、深拷贝的实现方式"><span class="toc-number">4.</span> <span class="toc-text">四、深拷贝的实现方式</span></a></li></ol>
+    </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
     <div class="sidebar sidebar-hide">
@@ -607,6 +723,8 @@ jsonContent:
     
     </div>
     <!-- async load share.js -->
+    
+        <script src="/scripts/share.js" async></script>    
      
     </body>
 </html>
